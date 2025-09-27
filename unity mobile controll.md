@@ -24,9 +24,7 @@ Pointer Up > 同上。
 
 步骤3: 编写摇杆脚本在Assets创建C#脚本VirtualJoystick.cs，附加到JoystickBackground。
 复制以下代码（基于标准实现，计算拖拽偏移作为移动输入）：
-
-csharp
-
+```csharp
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -70,13 +68,13 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
         // 可选：Update中平滑输入
     }
 }
+```
 
 在Inspector中拖拽JoystickHandle到“Handle”字段，JoystickBackground到“Background”字段。设置Movement Range=100。
 
 步骤4: 集成摇杆到玩家移动在PlayerController.cs的Update()中添加：
 
-csharp
-
+```csharp
 public VirtualJoystick joystick; // 拖拽到Inspector
 
 void Update()
@@ -86,6 +84,7 @@ void Update()
     Vector3 moveDir = transform.forward * joyInput.y + transform.right * joyInput.x; // 前后左右
     // 应用到CharacterController: controller.Move(moveDir * speed * Time.deltaTime);
 }
+```
 
 拖拽VirtualJoystick到玩家脚本的“Joystick”字段。
 
