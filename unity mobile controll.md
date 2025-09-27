@@ -98,7 +98,7 @@ Color: 绿色。
 步骤6: 绑定按钮事件创建脚本MobileButtons.cs，附加到Canvas。
 复制代码（使用OnClick事件触发玩家方法）：
 
-csharp
+```csharp
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -114,6 +114,7 @@ public class MobileButtons : MonoBehaviour
         interactBtn.onClick.AddListener(() => player.Interact()); // 绑定拿取
     }
 }
+```
 
 在Inspector拖拽三个Button和Player到字段。确保玩家有Jump()、Shoot()、Interact()方法（如rb.AddForce(Vector3.up * jumpForce) for Jump）。
 
