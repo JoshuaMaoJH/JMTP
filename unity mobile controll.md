@@ -36,20 +36,16 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public float movementRange = 100f; // 最大拖拽距离
     public Transform handle; // 拖拽手柄
     public RectTransform background; // 背景Rect
-
     private Vector2 inputVector; // 输出移动向量（-1~1）
     private Vector2 startPos; // 初始位置
     private bool isDragging = false;
-
     public Vector2 GetInput() { return inputVector; } // 获取输入供玩家脚本用
-
     public void OnPointerDown(PointerEventData eventData)
     {
         isDragging = true;
         startPos = eventData.position;
         handle.localPosition = Vector2.zero; // 手柄回中
     }
-
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging) return;
@@ -63,14 +59,12 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
             handle.localPosition = new Vector3(inputVector.x * movementRange, inputVector.y * movementRange, 0); // 更新手柄位置
         }
     }
-
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
         inputVector = Vector2.zero;
         handle.localPosition = Vector2.zero; // 手柄回中
     }
-
     void Update()
     {
         // 可选：Update中平滑输入
@@ -114,7 +108,6 @@ public class MobileButtons : MonoBehaviour
 {
     public PlayerController player; // 拖拽玩家
     public Button jumpBtn, shootBtn, interactBtn;
-
     void Start()
     {
         jumpBtn.onClick.AddListener(() => player.Jump()); // 绑定跳跃
